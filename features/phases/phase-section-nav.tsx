@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { cn } from "@/shared/lib/utils";
 import type { PhaseSection } from "@/entities/phase/types";
+import { cn } from "@/shared/lib/utils";
+import { useEffect, useState } from "react";
 
 interface Props {
   sections: PhaseSection[];
@@ -14,17 +14,17 @@ export function PhaseSectionNav({ sections }: Props) {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
+        for (const entry of entries) {
           if (entry.isIntersecting) setActive(entry.target.id);
-        });
+        }
       },
       { rootMargin: "-30% 0px -60% 0px" }
     );
 
-    sections.forEach(({ id }) => {
+    for (const { id } of sections) {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
-    });
+    }
 
     return () => observer.disconnect();
   }, [sections]);
