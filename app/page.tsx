@@ -71,37 +71,52 @@ export default function HomePage() {
         {/* Content – anchored bottom-left */}
         <div className="relative z-10 mt-auto max-w-6xl mx-auto w-full px-6 pb-28 pt-40">
           <div className="max-w-xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted mb-8">
-              Guia psicoeducativa per a familiars · 47 participants
-            </p>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-8xl font-light text-ink leading-none mb-8 tracking-tighter">
-              <span>
-                Cuidar sense
-              </span>
-              <br />
-              <em className="text-accent font-bold not-italic">perdre&apos;s</em>
-            </h1>
-            <p className="text-lg text-ink-muted leading-relaxed mb-10 max-w-md">
-              Quan un familiar rep un diagnòstic de càncer, els que l&apos;envolten
-              solen centrar-se en el pacient i obliden les seves pròpies
-              necessitats.
-              <br />
-              Aquesta guia és per a tu.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/guides"
-                className={buttonVariants({ variant: "primary", size: "lg" })}
-              >
-                Explora les guies <span aria-hidden>→</span>
-              </Link>
-              <Link
-                href="/thesis"
-                className={buttonVariants({ variant: "outline", size: "lg" })}
-              >
-                La recerca
-              </Link>
-            </div>
+            {/* 1 — context (smallest, first in) */}
+            <Reveal delay={0} direction="fade">
+              <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted mb-8">
+                Guia psicoeducativa per a familiars · 47 participants
+              </p>
+            </Reveal>
+
+            {/* 2 — main message */}
+            <Reveal delay={120}>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-8xl font-light text-ink leading-none mb-8 tracking-tighter">
+                <span>
+                  Cuidar sense
+                </span>
+                <br />
+                <em className="text-accent font-bold not-italic">perdre&apos;s</em>
+              </h1>
+            </Reveal>
+
+            {/* 3 — supporting copy */}
+            <Reveal delay={280}>
+              <p className="text-lg text-ink-muted leading-relaxed mb-10 max-w-md">
+                Quan un familiar rep un diagnòstic de càncer, els que l&apos;envolten
+                solen centrar-se en el pacient i obliden les seves pròpies
+                necessitats.
+                <br />
+                Aquesta guia és per a tu.
+              </p>
+            </Reveal>
+
+            {/* 4 — action (last, highest delay) */}
+            <Reveal delay={440}>
+              <div className="flex flex-wrap gap-3">
+                <Link
+                  href="/guides"
+                  className={buttonVariants({ variant: "primary", size: "lg" })}
+                >
+                  Explora les guies <span aria-hidden>→</span>
+                </Link>
+                <Link
+                  href="/thesis"
+                  className={buttonVariants({ variant: "outline", size: "lg" })}
+                >
+                  La recerca
+                </Link>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
@@ -109,9 +124,11 @@ export default function HomePage() {
       {/* Stats */}
       <section className="bg-surface border-y border-border">
         <div className="max-w-6xl mx-auto px-6 py-16">
-          <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted mb-12">
-            Per què és necessària
-          </p>
+          <Reveal delay={0} direction="fade">
+            <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted mb-12">
+              Per què és necessària
+            </p>
+          </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {keyStats.map((stat, i) => (
               <Reveal key={stat.value} delay={i * 100} className="flex flex-col gap-3">
