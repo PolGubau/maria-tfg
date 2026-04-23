@@ -2,7 +2,7 @@ import Link from "next/link";
 import { modules } from "~/entities/module/data";
 import { phases } from "~/entities/phase/data";
 import { ModuleCard } from "~/features/modules/module-card";
-import { Badge } from "~/shared/ui/badge";
+import { PhaseCard } from "~/features/phases/phase-card";
 import { buttonVariants } from "~/shared/ui/button";
 import { Reveal } from "~/shared/ui/reveal";
 
@@ -159,38 +159,11 @@ export default function HomePage() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {phases.map((phase, idx) => {
-            const badgeVariant = (phase.colorVar as "treatment" | "post" | "advanced") ?? "muted";
-            return (
-              <Reveal key={phase.slug} delay={idx * 100}>
-                <Link
-                  href={`/phases/${phase.slug}`}
-                  className="group relative border border-border rounded-xl p-6 bg-canvas hover:border-ink/20 hover:shadow-sm transition-all flex flex-col justify-between"
-                >
-                  <main>
-                    <span className="absolute -top-2 -left-2 w-8 h-8 rounded-full border border-border bg-canvas flex items-center justify-center text-xs text-ink">
-                      {idx + 1}
-                    </span>
-                    <Badge variant={badgeVariant} className="mb-4">
-                      {phase.shortTitle}
-                    </Badge>
-                    <h3 className="text-lg font-semibold text-ink mb-2">
-                      {phase.subtitle}
-                    </h3>
-                    <p className="text-sm text-ink-muted leading-relaxed mb-5">
-                      {phase.description}
-                    </p>
-                  </main>
-                  <footer>
-
-                    <span className="text-sm font-medium text-ink group-hover:text-accent transition-colors">
-                      Explorar fase →
-                    </span>
-                  </footer>
-                </Link>
-              </Reveal>
-            );
-          })}
+          {phases.map((phase, idx) => (
+            <Reveal key={phase.slug} delay={idx * 100}>
+              <PhaseCard phase={phase} />
+            </Reveal>
+          ))}
         </div>
       </section>
       <section className="border-t border-border bg-surface">

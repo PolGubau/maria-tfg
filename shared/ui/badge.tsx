@@ -19,7 +19,7 @@ const variantClasses: Record<BadgeVariant, string> = {
 };
 
 const base =
-  "inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold border";
+  "inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold border-0";
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
   variant?: BadgeVariant;
@@ -29,6 +29,7 @@ export function Badge({
   variant = "default",
   className,
   ...props
+  
 }: BadgeProps) {
   return (
     <span
