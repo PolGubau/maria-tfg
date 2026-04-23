@@ -205,10 +205,13 @@ h6 {
 	100% {
 		opacity: 1;
 	}
-	35% {
-		opacity: 0.35;
+	30% {
+		opacity: 0.45;
 	}
-	68% {
-		opacity: 0.72;
+	55% {
+		opacity: 0.8;
+	}
+	75% {
+		opacity: 0.55;
 	}
 }

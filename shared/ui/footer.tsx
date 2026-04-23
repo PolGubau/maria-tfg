@@ -68,11 +68,9 @@ export function Footer() {
 
         <div className="pt-8 border-t border-border flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <p className="text-xs text-ink-muted">
-            Treball de Fi de Grau en Psicologia · Universitat · 2026
+            Treball de Fi de Grau en Psicologia · UAB · 2026
           </p>
-          <p className="text-xs text-ink-muted">
-            Construït amb cura per a les famílies que cuiden.
-          </p>
+
         </div>
       </div>
     </footer>
