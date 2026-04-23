@@ -206,7 +206,7 @@ export default function ThesisPage() {
 
         {/* CTA / Contact */}
         <section className="bg-accent-light rounded-xl p-8">
-
+           
           <h3 className="text-xl font-semibold text-ink mb-3">
             Tens preguntes sobre la recerca?
           </h3>

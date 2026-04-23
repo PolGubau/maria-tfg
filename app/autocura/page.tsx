@@ -68,7 +68,7 @@ export default function AutocuraPage() {
   return (
     <div>
       <div className="border-b border-border">
-        <div className="max-w-2xl mx-auto px-6 py-14">
+        <div className="max-w-4xl mx-auto px-6 py-14">
           <p className="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-5">
             Test d&apos;autocura
           </p>
@@ -80,8 +80,8 @@ export default function AutocuraPage() {
           </p>
         </div>
       </div>
-
-      <div className="max-w-2xl mx-auto px-6 py-12 space-y-8">
+o o o
+      <div className="max-w-4xl mx-auto px-6 py-12 space-y-8">
         {!submitted ? (
           <>
             {QUESTIONS.map((q, i) => (
@@ -95,11 +95,10 @@ export default function AutocuraPage() {
                     <button
                       key={opt.value}
                       onClick={() => setAnswers((p) => ({ ...p, [q.id]: opt.value }))}
-                      className={`px-3 py-2 text-xs font-medium rounded-lg border transition-all ${
-                        answers[q.id] === opt.value
+                      className={`px-3 py-2 text-xs font-medium rounded-lg border transition-all ${answers[q.id] === opt.value
                           ? "bg-ink text-canvas border-ink"
                           : "bg-canvas text-ink-muted border-border hover:border-ink hover:text-ink"
-                      }`}
+                        }`}
                     >
                       {opt.label}
                     </button>

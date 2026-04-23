@@ -3,9 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+// useState kept: used by ReadingProgress
 import { cn } from "~/shared/lib/utils";
 
-const links = [
+export const links = [
   { href: "/phases", label: "Guies", matchPrefix: ["/phases"] },
   { href: "/modules", label: "Mòduls", matchPrefix: ["/modules"] },
   { href: "/autocura", label: "Test d'autocura", matchPrefix: ["/autocura"] },
@@ -41,7 +42,6 @@ function ReadingProgress() {
 
 export function Nav() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
   const isHome = pathname === "/";
 
   return (
@@ -81,53 +81,7 @@ export function Nav() {
           })}
         </ul>
 
-        {/* Mobile toggle */}
-        <button
-          type="button"
-          className="md:hidden p-2 -mr-2 text-ink-muted hover:text-ink transition-colors"
-          onClick={() => setOpen(!open)}
-          aria-label={open ? "Tancar menú" : "Obrir menú"}
-          aria-expanded={open}
-        >
-          <span
-            className="block w-5 h-px bg-current transition-transform duration-200"
-            style={{ transform: open ? "translateY(4px) rotate(45deg)" : "none" }}
-          />
-          <span
-            className="block w-5 h-px bg-current mt-1.5 transition-all duration-200"
-            style={{ opacity: open ? 0 : 1 }}
-          />
-          <span
-            className="block w-4 h-px bg-current mt-1.5 transition-transform duration-200"
-            style={{ transform: open ? "translateY(-10px) rotate(-45deg)" : "none", width: open ? "20px" : "16px" }}
-          />
-        </button>
       </nav>
-
-      {/* Mobile menu */}
-      {open && (
-        <div className="md:hidden border-t border-border bg-canvas px-6 py-4">
-          <ul className="flex flex-col gap-0.5">
-            {[{ href: "/", label: "Inici", matchPrefix: ["/"] }, ...links].map(({ href, label, matchPrefix }) => {
-              const active = href === "/" ? pathname === "/" : matchPrefix.some((p) => pathname === p || pathname.startsWith(p));
-              return (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    onClick={() => setOpen(false)}
-                    className={cn(
-                      "block px-3 py-2 text-sm rounded transition-colors",
-                      active ? "text-ink font-medium bg-surface" : "text-ink-muted hover:text-ink hover:bg-surface"
-                    )}
-                  >
-                    {label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      )}
     </header>
   );
 }

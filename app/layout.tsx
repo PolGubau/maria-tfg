@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Google_Sans } from "next/font/google";
 import "./globals.css";
 import { Footer } from "~/shared/ui/footer";
+import { MobileNav } from "~/shared/ui/mobile-nav";
 import { Nav } from "~/shared/ui/nav";
 
 const geistSans = Google_Sans({
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
+        <MobileNav />
       </body>
     </html>
   );
