@@ -1,7 +1,7 @@
-import { BookOpen, Clock } from "lucide-react";
 import Link from "next/link";
 import { modules } from "~/entities/module/data";
 import { phases } from "~/entities/phase/data";
+import { ModuleCard } from "~/features/modules/module-card";
 import { Badge } from "~/shared/ui/badge";
 import { buttonVariants } from "~/shared/ui/button";
 import { Reveal } from "~/shared/ui/reveal";
@@ -208,32 +208,10 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {modules.map((mod, i) => (
               <Reveal key={mod.slug} delay={i * 80}>
-                <Link
-                  href={`/modules/${mod.slug}`}
-                  className="group flex flex-col justify-between p-6 bg-canvas/50 border border-border rounded-2xl hover:border-accent/40 hover:shadow-md transition-all h-full"
-                >
-                  <div>
-                    <BookOpen className="size-7 mb-4 text-accent" strokeWidth={1.8} />
-                    <p className="font-semibold text-ink leading-snug mb-2 group-hover:text-accent transition-colors">
-                      {mod.title}
-                    </p>
-                    <p className="text-sm text-ink-muted leading-relaxed">
-                      {mod.subtitle}
-                    </p>
-                  </div>
-                  <div className="flex items-center justify-between mt-5 pt-4 ">
-                    <div className="flex items-center gap-1.5 text-xs text-ink-muted">
-                      <Clock className="w-3.5 h-3.5" />
-                      {mod.readingTime} min de lectura
-                    </div>
-                    <span className="text-xs font-medium text-accent group-hover:underline">
-                      Veure mòdul &rarr;
-                    </span>
-                  </div>
-                </Link>
+                <ModuleCard mod={mod} />
               </Reveal>
             ))}
           </div>
