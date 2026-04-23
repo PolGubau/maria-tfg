@@ -213,12 +213,10 @@ export default function HomePage() {
               <Reveal key={mod.slug} delay={i * 80}>
                 <Link
                   href={`/modules/${mod.slug}`}
-                  className="group flex flex-col justify-between p-6 bg-canvas border border-border rounded-xl hover:border-accent/40 hover:shadow-md transition-all h-full"
+                  className="group flex flex-col justify-between p-6 bg-canvas/50 border border-border rounded-2xl hover:border-accent/40 hover:shadow-md transition-all h-full"
                 >
                   <div>
-                    <div className="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center mb-4">
-                      <BookOpen className="w-5 h-5 text-accent" strokeWidth={1.8} />
-                    </div>
+                    <BookOpen className="size-7 mb-4 text-accent" strokeWidth={1.8} />
                     <p className="font-semibold text-ink leading-snug mb-2 group-hover:text-accent transition-colors">
                       {mod.title}
                     </p>
@@ -226,13 +224,13 @@ export default function HomePage() {
                       {mod.subtitle}
                     </p>
                   </div>
-                  <div className="flex items-center justify-between mt-5 pt-4 border-t border-border">
+                  <div className="flex items-center justify-between mt-5 pt-4 ">
                     <div className="flex items-center gap-1.5 text-xs text-ink-muted">
                       <Clock className="w-3.5 h-3.5" />
                       {mod.readingTime} min de lectura
                     </div>
                     <span className="text-xs font-medium text-accent group-hover:underline">
-                      Veure mòdul →
+                      Veure mòdul &rarr;
                     </span>
                   </div>
                 </Link>

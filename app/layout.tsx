@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Google_Sans } from "next/font/google";
 import "./globals.css";
 import { Footer } from "~/shared/ui/footer";
 import { Nav } from "~/shared/ui/nav";
 
-const geistSans = Geist({
+const geistSans = Google_Sans({
   variable: "--font-sans",
   subsets: ["latin"],
   display: "swap",
