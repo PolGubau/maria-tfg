@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { buttonVariants } from "~/shared/ui/button";
 
 export const metadata: Metadata = {
   title: "La recerca · Cuidar sense perdre's",
@@ -43,7 +44,7 @@ const methodology = [
   {
     label: "Mostra",
     value:
-      "47 participants — familiars i persones properes a pacients amb càncer",
+      "47 participants - familiars i persones properes a pacients amb càncer",
   },
   {
     label: "Recollida",
@@ -81,16 +82,10 @@ export default function ThesisPage() {
             associat: aquesta guia.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="/thesis.pdf"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-ink text-canvas text-sm font-medium rounded-lg hover:bg-accent transition-colors"
-            >
+            <a href="/thesis.pdf" className={buttonVariants({ variant: "primary" })}>
               ↓ Descarrega el TFG (PDF)
             </a>
-            <Link
-              href="/data"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-surface text-ink text-sm font-medium rounded-lg border border-border hover:bg-surface-hover transition-colors"
-            >
+            <Link href="/data" className={buttonVariants({ variant: "secondary" })}>
               Veure dades de l&apos;enquesta
             </Link>
           </div>
@@ -126,9 +121,9 @@ export default function ThesisPage() {
             Resultats principals
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {findings.map((f, i) => (
+            {findings.map((f) => (
               <div
-                key={i}
+                key={f.stat}
                 className="border border-border rounded-xl p-6 bg-canvas"
               >
                 <p className="text-3xl font-semibold text-accent mb-2">
@@ -148,8 +143,8 @@ export default function ThesisPage() {
             Metodologia
           </p>
           <div className="bg-surface border border-border rounded-xl divide-y divide-border">
-            {methodology.map((m, i) => (
-              <div key={i} className="flex gap-4 px-6 py-4">
+            {methodology.map((m) => (
+              <div key={m.label} className="flex gap-4 px-6 py-4">
                 <span className="text-sm font-semibold text-ink w-28 shrink-0">
                   {m.label}
                 </span>
@@ -171,8 +166,8 @@ export default function ThesisPage() {
             expressades pels participants a l&apos;enquesta.
           </p>
           <ul className="space-y-2">
-            {themes.map((t, i) => (
-              <li key={i} className="flex items-start gap-3">
+            {themes.map((t) => (
+              <li key={t} className="flex items-start gap-3">
                 <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent shrink-0" />
                 <span className="text-sm text-ink-muted">{t}</span>
               </li>
@@ -193,16 +188,10 @@ export default function ThesisPage() {
             saber més sobre el projecte, pots contactar-me directament.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link
-              href="/data"
-              className="px-5 py-2.5 bg-ink text-canvas text-sm font-medium rounded-lg hover:bg-accent transition-colors"
-            >
+            <Link href="/data" className={buttonVariants({ variant: "primary" })}>
               Explorar les dades
             </Link>
-            <Link
-              href="/phases/tractament"
-              className="px-5 py-2.5 bg-canvas text-ink text-sm font-medium rounded-lg border border-border hover:bg-surface transition-colors"
-            >
+            <Link href="/phases/tractament" className={buttonVariants({ variant: "secondary" })}>
               Llegir la guia
             </Link>
           </div>

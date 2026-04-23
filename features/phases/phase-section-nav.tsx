@@ -1,7 +1,7 @@
 "use client";
 
-import type { PhaseSection } from "@/entities/phase/types";
-import { cn } from "@/shared/lib/utils";
+import type { PhaseSection } from "~/entities/phase/types";
+import { cn } from "~/shared/lib/utils";
 import { useEffect, useState } from "react";
 
 interface Props {
@@ -18,7 +18,7 @@ export function PhaseSectionNav({ sections }: Props) {
           if (entry.isIntersecting) setActive(entry.target.id);
         }
       },
-      { rootMargin: "-30% 0px -60% 0px" }
+      { rootMargin: "-25% 0px -65% 0px" }
     );
 
     for (const { id } of sections) {
@@ -30,27 +30,43 @@ export function PhaseSectionNav({ sections }: Props) {
   }, [sections]);
 
   return (
-    <nav className="hidden lg:block sticky top-20 self-start w-48 shrink-0">
-      <p className="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-4">
-        Continguts
+    <nav className="hidden lg:block sticky top-24 self-start w-52 shrink-0" aria-label="Índex de continguts">
+      <p className="text-[10px] font-bold uppercase tracking-[0.12em] text-ink-muted mb-5">
+        En aquesta pàgina
       </p>
-      <ul className="space-y-1">
-        {sections.map((section) => (
-          <li key={section.id}>
-            <a
-              href={`#${section.id}`}
-              className={cn(
-                "block text-sm py-1.5 pl-3 border-l-2 transition-colors",
-                active === section.id
-                  ? "border-accent text-ink font-medium"
-                  : "border-transparent text-ink-muted hover:text-ink hover:border-border"
-              )}
-            >
-              {section.title}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <ol className="space-y-0.5">
+        {sections.map((section, i) => {
+          const isActive = active === section.id;
+          return (
+            <li key={section.id}>
+              <a
+                href={`#${section.id}`}
+                className={cn(
+                  "flex items-start gap-3 py-2 px-2 rounded-md text-sm transition-all duration-200 group",
+                  isActive
+                    ? "bg-surface text-ink"
+                    : "text-ink-muted hover:text-ink hover:bg-surface/60"
+                )}
+              >
+                <span
+                  className={cn(
+                    "shrink-0 mt-0.5 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold transition-colors",
+                    isActive
+                      ? "bg-accent text-canvas"
+                      : "bg-border text-ink-muted group-hover:bg-surface-hover"
+                  )}
+                  aria-hidden
+                >
+                  {i + 1}
+                </span>
+                <span className={cn("leading-snug", isActive && "font-medium")}>
+                  {section.title}
+                </span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 }

@@ -12,7 +12,7 @@ import {
   Pie,
   Legend,
 } from "recharts";
-import type { ChartItem } from "@/shared/lib/parse-survey";
+import type { ChartItem } from "~/shared/lib/parse-survey";
 
 const COLORS = {
   treatment: "#b87a4a",

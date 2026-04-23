@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { getSurveyStats } from "@/shared/lib/parse-survey";
+import { getSurveyStats } from "~/shared/lib/parse-survey";
 import {
   HorizontalBarChart,
   VerticalBarChart,
   DonutChart,
-} from "@/features/data/survey-charts";
+} from "~/features/data/survey-charts";
 
 export const metadata: Metadata = {
   title: "Dades de l'enquesta · Cuidar sense perdre's",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import type { Technique } from "@/entities/module/types";
+import type { Technique } from "~/entities/module/types";
 
 interface Props {
   technique: Technique;

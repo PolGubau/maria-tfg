@@ -1,8 +1,10 @@
-import { notFound } from "next/navigation";
+import { getModule, modules } from "~/entities/module/data";
+import { TechniqueCard } from "~/features/modules/technique-card";
+import { Badge } from "~/shared/ui/badge";
+import { buttonVariants } from "~/shared/ui/button";
 import type { Metadata } from "next";
-import { getModule, modules } from "@/entities/module/data";
-import { TechniqueCard } from "@/features/modules/technique-card";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -30,12 +32,8 @@ export default async function ModulePage({ params }: Props) {
       <div className="border-b border-border">
         <div className="max-w-4xl mx-auto px-6 py-12">
           <div className="flex flex-wrap gap-2 mb-5">
-            <span className="inline-flex px-2.5 py-1 rounded-md text-xs font-semibold bg-accent-light border border-treatment-border text-accent">
-              Mòdul pràctic
-            </span>
-            <span className="inline-flex px-2.5 py-1 rounded-md text-xs font-semibold bg-surface border border-border text-ink-muted">
-              {mod.readingTime} min de lectura
-            </span>
+            <Badge variant="accent">Mòdul pràctic</Badge>
+            <Badge variant="muted">{mod.readingTime} min de lectura</Badge>
           </div>
           <h1 className="text-3xl md:text-4xl font-semibold text-ink mb-3">
             {mod.title}
@@ -48,7 +46,7 @@ export default async function ModulePage({ params }: Props) {
               <Link
                 key={phase}
                 href={`/phases/${phase}`}
-                className="text-xs px-2.5 py-1 rounded-md bg-surface border border-border text-ink-muted hover:text-ink transition-colors"
+                className={buttonVariants({ variant: "ghost", size: "sm", className: "border border-border" })}
               >
                 ↗ {phase.replace("-", " ")}
               </Link>
@@ -73,8 +71,8 @@ export default async function ModulePage({ params }: Props) {
             </h2>
 
             <div className="space-y-4 mb-8">
-              {section.content.map((para, i) => (
-                <p key={i} className="text-ink-muted leading-relaxed">
+              {section.content.map((para) => (
+                <p key={para} className="text-ink-muted leading-relaxed">
                   {para}
                 </p>
               ))}
@@ -114,16 +112,10 @@ export default async function ModulePage({ params }: Props) {
               professional especialitzat.
             </p>
             <div className="flex flex-wrap gap-3 justify-center">
-              <Link
-                href="/thesis"
-                className="px-5 py-2.5 bg-ink text-canvas text-sm font-medium rounded-lg hover:bg-accent transition-colors"
-              >
+              <Link href="/thesis" className={buttonVariants({ variant: "primary" })}>
                 Llegir la recerca
               </Link>
-              <Link
-                href="/data"
-                className="px-5 py-2.5 bg-surface text-ink text-sm font-medium rounded-lg border border-border hover:bg-surface-hover transition-colors"
-              >
+              <Link href="/data" className={buttonVariants({ variant: "secondary" })}>
                 Veure dades de l&apos;enquesta
               </Link>
             </div>

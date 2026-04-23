@@ -1,8 +1,12 @@
-import { notFound } from "next/navigation";
-import Link from "next/link";
+import { BookOpen, Clock, Lightbulb } from "lucide-react";
 import type { Metadata } from "next";
-import { getPhase, phases } from "@/entities/phase/data";
-import { PhaseSectionNav } from "@/features/phases/phase-section-nav";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { modules } from "~/entities/module/data";
+import { getPhase, phases } from "~/entities/phase/data";
+import { PhaseSectionNav } from "~/features/phases/phase-section-nav";
+import { ResourceCard } from "~/features/phases/resource-card";
+import { Badge } from "~/shared/ui/badge";
 
 interface Props {
   params: Promise<{ phase: string }>;
@@ -22,19 +26,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-const phaseColors: Record<string, { badge: string; bar: string }> = {
-  treatment: {
-    badge: "bg-treatment-bg border-treatment-border text-treatment",
-    bar: "bg-treatment",
-  },
-  post: {
-    badge: "bg-post-bg border-post-border text-post",
-    bar: "bg-post",
-  },
-  advanced: {
-    badge: "bg-advanced-bg border-advanced-border text-advanced",
-    bar: "bg-advanced",
-  },
+const phaseBarClass: Record<string, string> = {
+  treatment: "bg-treatment",
+  post: "bg-post",
+  advanced: "bg-advanced",
 };
 
 const otherPhasesLabel: Record<string, string[]> = {
@@ -48,23 +43,23 @@ export default async function PhasePage({ params }: Props) {
   const phase = getPhase(slug);
   if (!phase) notFound();
 
-  const colors = phaseColors[phase.colorVar] ?? {
-    badge: "bg-surface border-border text-ink-muted",
-    bar: "bg-ink-muted",
-  };
+  const barClass = phaseBarClass[phase.colorVar] ?? "bg-ink-muted";
+  const badgeVariant = (phase.colorVar as "treatment" | "post" | "advanced") ?? "muted";
 
   const otherPhases = phases.filter((p) =>
     (otherPhasesLabel[slug] ?? []).includes(p.slug)
   );
+
+  const relatedModules = modules.filter((m) => m.relatedPhases.includes(slug));
 
   return (
     <div>
       {/* Phase header */}
       <div className="border-b border-border">
         <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className={`inline-flex px-2.5 py-1 rounded-md text-xs font-semibold mb-4 border ${colors.badge}`}>
+          <Badge variant={badgeVariant} className="mb-4">
             {phase.shortTitle}
-          </div>
+          </Badge>
           <h1 className="text-3xl md:text-4xl font-semibold text-ink mb-3">
             {phase.title}
             <span className="block text-ink-muted font-normal text-2xl mt-1">
@@ -90,7 +85,7 @@ export default async function PhasePage({ params }: Props) {
                 </div>
                 <div className="w-full h-1.5 bg-border rounded-full mb-2">
                   <div
-                    className={`h-full rounded-full ${colors.bar}`}
+                    className={`h-full rounded-full ${barClass}`}
                     style={{ width: `${stat.value}%` }}
                   />
                 </div>
@@ -115,14 +110,24 @@ export default async function PhasePage({ params }: Props) {
                   {section.title}
                 </h2>
                 <div className="space-y-4">
-                  {section.content.map((para, i) => (
-                    <p key={i} className="text-ink-muted leading-relaxed">
+                  {section.content.map((para) => (
+                    <p key={para} className="text-ink-muted leading-relaxed">
                       {para}
                     </p>
                   ))}
                 </div>
+                {section.resources && section.resources.length > 0 && (
+                  <div className="mt-6 space-y-3">
+                    {section.resources.map((resource) => (
+                      <ResourceCard key={resource.name} resource={resource} />
+                    ))}
+                  </div>
+                )}
                 {section.tip && (
-                  <div className="mt-6 p-4 bg-accent-light border-l-4 border-accent rounded-r-lg">
+                  <div className="mt-6 p-4 bg-surface rounded-xl flex gap-3 items-start">
+                    <div className="shrink-0 size-8 rounded-md bg-accent/15 flex items-center justify-center mt-0.5">
+                      <Lightbulb className="w-4 h-4 text-accent" strokeWidth={1.8} />
+                    </div>
                     <p className="text-sm text-ink leading-relaxed">
                       <span className="font-semibold">Consell pràctic: </span>
                       {section.tip}
@@ -138,9 +143,9 @@ export default async function PhasePage({ params }: Props) {
                 Principals reptes d&apos;aquesta fase
               </h2>
               <ul className="space-y-3">
-                {phase.mainChallenges.map((challenge, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${colors.bar}`} />
+                {phase.mainChallenges.map((challenge) => (
+                  <li key={challenge} className="flex items-start gap-3">
+                    <span className={`mt-1.5 w-1.5 h-1.5 rounded-full shrink-0 ${barClass}`} />
                     <span className="text-ink-muted text-sm leading-relaxed">
                       {challenge}
                     </span>
@@ -151,6 +156,52 @@ export default async function PhasePage({ params }: Props) {
           </div>
         </div>
       </div>
+
+      {/* Related modules */}
+      {relatedModules.length > 0 && (
+        <div className="border-t border-border bg-accent/5">
+          <div className="max-w-6xl mx-auto px-6 py-12">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-1">
+                  Eines pràctiques
+                </p>
+                <h2 className="text-lg font-semibold text-ink">
+                  Mòduls pràctics relacionats
+                </h2>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {relatedModules.map((mod) => (
+                <Link
+                  key={mod.slug}
+                  href={`/modules/${mod.slug}`}
+                  className="group flex gap-4 items-start p-5 bg-canvas border border-border rounded-xl hover:border-accent/40 hover:shadow-sm transition-all"
+                >
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <BookOpen className="w-5 h-5 text-accent" strokeWidth={1.8} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold text-ink leading-snug group-hover:text-accent transition-colors">
+                      {mod.title}
+                    </p>
+                    <p className="text-xs text-ink-muted mt-1 leading-relaxed line-clamp-2">
+                      {mod.subtitle}
+                    </p>
+                    <div className="flex items-center gap-1 mt-2 text-xs text-ink-muted">
+                      <Clock className="w-3 h-3" />
+                      {mod.readingTime} min
+                    </div>
+                  </div>
+                  <span className="text-ink-muted group-hover:text-accent transition-colors shrink-0 mt-1">
+                    →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Other phases */}
       {otherPhases.length > 0 && (
