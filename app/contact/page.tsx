@@ -66,6 +66,26 @@ export default function ContactPage() {
           </div>
         </section>
 
+        {/* Citation */}
+        <section>
+          <p className="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-6">
+            Com citar aquesta web
+          </p>
+          <div className="border border-border rounded-xl p-6 bg-canvas space-y-4">
+            <p className="text-sm text-ink-muted leading-relaxed">
+              Si uses aquesta guia o les seves dades en un treball acadèmic o professional, pots citar-la en format <strong className="text-ink">APA 7</strong>:
+            </p>
+            <div className="bg-surface rounded-lg px-5 py-4 border border-border">
+              <p className="text-sm font-mono text-ink leading-relaxed select-all cursor-text">
+                Rogés, M. (2026). <em>Cuidar sense perdre&apos;s: Guia psicoeducativa per a familiars de persones amb càncer</em>. https://tfg-maria.vercel.app/
+              </p>
+            </div>
+            <p className="text-xs text-ink-muted">
+              Fes clic al text per seleccionar-lo tot i copiar-lo directament al teu treball.
+            </p>
+          </div>
+        </section>
+
         {/* FAQ */}
         <section>
           <p className="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-6">

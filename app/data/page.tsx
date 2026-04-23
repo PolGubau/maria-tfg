@@ -32,13 +32,17 @@ function StatCard({ value, label, sub }: StatCardProps) {
 }
 
 interface ChartCardProps {
+  figure: number;
   title: string;
   description?: string;
   children: React.ReactNode;
 }
-function ChartCard({ title, description, children }: ChartCardProps) {
+function ChartCard({ figure, title, description, children }: ChartCardProps) {
   return (
     <div className="bg-canvas border border-border rounded-xl p-6">
+      <p className="text-[10px] font-semibold uppercase tracking-widest text-ink-muted mb-0.5">
+        Figura {figure}
+      </p>
       <h3 className="text-base font-semibold text-ink mb-1">{title}</h3>
       {description && (
         <p className="text-sm text-ink-muted mb-5 leading-relaxed">
@@ -119,6 +123,7 @@ export default function DataPage() {
             Distribució per fase oncològica
           </p>
           <ChartCard
+            figure={1}
             title="On es troben els participants en el procés oncològic"
             description="La majoria dels participants ja han superat el tractament actiu, cosa que els permet reflexionar sobre l'experiència viscuda."
           >
@@ -128,6 +133,7 @@ export default function DataPage() {
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <ChartCard
+            figure={2}
             title="Orientació emocional en el moment del diagnòstic"
             description="Qui va proporcionar orientació al rebre el diagnòstic."
           >
@@ -135,6 +141,7 @@ export default function DataPage() {
           </ChartCard>
 
           <ChartCard
+            figure={3}
             title="Valoració del suport emocional rebut"
             description="Puntuació de l'1 al 5 sobre el suport emocional rebut durant el procés."
           >
@@ -144,6 +151,7 @@ export default function DataPage() {
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <ChartCard
+            figure={4}
             title="Necessitat d'ajuda professional"
             description="Han sentit la necessitat de rebre ajuda d'un psicòleg o grup de suport."
           >
@@ -151,6 +159,7 @@ export default function DataPage() {
           </ChartCard>
 
           <ChartCard
+            figure={5}
             title="Accessibilitat dels recursos"
             description="Dels que van necessitar ajuda, si els recursos eren fàcilment accessibles."
           >
@@ -164,6 +173,7 @@ export default function DataPage() {
             Comparativa per fase oncològica
           </p>
           <ChartCard
+            figure={6}
             title="Necessitats emocionals per fase"
             description="Les necessitats dels familiars varien significativament segons el moment del procés oncològic. La fase avançada concentra les majors necessitats no cobertes."
           >
@@ -177,6 +187,7 @@ export default function DataPage() {
             Continguts més sol·licitats per a la guia
           </p>
           <ChartCard
+            figure={7}
             title="Temes que els participants volen a la guia"
             description="Cada participant podia seleccionar entre 3 i 5 temes. Resultat: la gestió emocional és la necessitat més universal."
           >
