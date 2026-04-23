@@ -140,7 +140,7 @@ export function GroupedBarChart({ data }: GroupedChartProps) {
         <Tooltip
           cursor={{ fill: "#f3eee6" }}
           contentStyle={{ border: "1px solid #e5e0d8", borderRadius: 8, fontSize: 12 }}
-          formatter={(v: number, name: string) => [`${v}%`, name]}
+          formatter={(v, name) => [v != null ? `${v}%` : "", name]}
         />
         <Legend
           iconType="circle"
