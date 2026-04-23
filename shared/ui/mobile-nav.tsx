@@ -1,5 +1,6 @@
 "use client";
 
+import { BookOpen, Heart, Home, Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -11,9 +12,9 @@ const HOME = { href: "/", label: "Inici", matchPrefix: ["/"] };
 
 // Bottom tab bar: 3 primary + 1 menu trigger
 const TAB_LINKS = [
-  { href: "/", label: "Inici", icon: "🏠" },
-  { href: "/modules", label: "Mòduls", icon: "📚" },
-  { href: "/autocura", label: "Test", icon: "🧘" },
+  { href: "/", label: "Inici", Icon: Home },
+  { href: "/modules", label: "Mòduls", Icon: BookOpen },
+  { href: "/autocura", label: "Test", Icon: Heart },
 ];
 
 function isActive(href: string, prefix: string[], pathname: string) {
@@ -30,7 +31,7 @@ export function MobileNav() {
       <div className="md:hidden fixed bottom-0 inset-x-0 z-50 pb-[env(safe-area-inset-bottom)]">
         <div className="bg-canvas/95 backdrop-blur-md border-t border-border">
           <nav className="flex items-stretch h-16">
-            {TAB_LINKS.map(({ href, label, icon }) => {
+            {TAB_LINKS.map(({ href, label, Icon }) => {
               const active = isActive(href, [href], pathname);
               return (
                 <Link
@@ -41,7 +42,7 @@ export function MobileNav() {
                     active ? "text-accent" : "text-ink-muted"
                   )}
                 >
-                  <span className="text-xl leading-none">{icon}</span>
+                  <Icon className="w-5 h-5" strokeWidth={1.8} />
                   <span>{label}</span>
                 </Link>
               );
@@ -57,7 +58,7 @@ export function MobileNav() {
                   )}
                   aria-label="Menú principal"
                 >
-                  <span className="text-xl leading-none">☰</span>
+                  <Menu className="w-5 h-5" strokeWidth={1.8} />
                   <span>Menú</span>
                 </button>
               </Drawer.Trigger>

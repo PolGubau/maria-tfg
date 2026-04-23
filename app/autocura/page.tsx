@@ -54,9 +54,10 @@ const MODULE_LABELS: Record<string, string> = {
 
 export default function AutocuraPage() {
   const [answers, setAnswers] = useState<Record<string, number>>({});
+  const [touched, setTouched] = useState<Set<string>>(new Set());
   const [submitted, setSubmitted] = useState(false);
 
-  const allAnswered = QUESTIONS.every((q) => answers[q.id] !== undefined);
+  const allAnswered = QUESTIONS.every((q) => touched.has(q.id));
   const score = Object.values(answers).reduce((a, b) => a + b, 0);
   const result = getResult(score);
 
@@ -75,48 +76,44 @@ export default function AutocuraPage() {
           </p>
         </div>
       </div>
-      <div className="max-w-4xl mx-auto px-6 py-12 space-y-6">
+      <div className="max-w-2xl mx-auto px-6 py-12">
         {!submitted ? (
           <>
-            {QUESTIONS.map((q, i) => {
-              const val = answers[q.id];
-              return (
-                <div key={q.id} className="p-5 rounded-xl border border-border bg-surface/40 space-y-4">
-                  <p className="text-sm font-medium text-ink leading-snug">
-                    <span className="text-ink-muted mr-2 tabular-nums">{i + 1}.</span>
-                    {q.text}
-                  </p>
+            <div className="divide-y divide-border">
+              {QUESTIONS.map((q, i) => {
+                const val = answers[q.id];
+                return (
+                  <div key={q.id} className="py-7 space-y-4">
+                    <p className="text-sm text-ink leading-snug">
+                      <span className="text-ink-muted/60 mr-2 tabular-nums text-xs">{i + 1}.</span>
+                      {q.text}
+                    </p>
 
-                  {/* Labels */}
-                  <div className="flex justify-between text-[10px] text-ink-muted font-medium px-0.5">
-                    {LABELS.map((l) => <span key={l}>{l}</span>)}
+                    <input
+                      type="range"
+                      min={0}
+                      max={3}
+                      step={1}
+                      value={val ?? 0}
+                      onPointerDown={() =>
+                        setTouched((p) => new Set(p).add(q.id))
+                      }
+                      onChange={(e) =>
+                        setAnswers((p) => ({ ...p, [q.id]: Number(e.target.value) }))
+                      }
+                      className="w-full accent-accent cursor-pointer focus:outline-none"
+                      aria-label={q.text}
+                    />
+
+                    <div className="flex justify-between text-[10px] text-ink-muted/70 px-0.5">
+                      {LABELS.map((l, li) => (
+                        <span key={l} className={val === li ? "text-accent font-semibold" : ""}>{l}</span>
+                      ))}
+                    </div>
                   </div>
-
-                  {/* Slider */}
-                  <input
-                    type="range"
-                    min={0}
-                    max={3}
-                    step={1}
-                    value={val ?? 0}
-                    onChange={(e) =>
-                      setAnswers((p) => ({ ...p, [q.id]: Number(e.target.value) }))
-                    }
-                    onClick={() => {
-                      if (answers[q.id] === undefined)
-                        setAnswers((p) => ({ ...p, [q.id]: 0 }));
-                    }}
-                    className="w-full accent-accent cursor-pointer"
-                    aria-label={q.text}
-                  />
-
-                  {/* Selected value */}
-                  <p className={`text-xs text-center font-medium transition-colors ${val === undefined ? "text-ink-muted/40 italic" : "text-accent"}`}>
-                    {val === undefined ? "Mou el control per respondre" : LABELS[val]}
-                  </p>
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
 
             <div className="pt-4">
               <button
