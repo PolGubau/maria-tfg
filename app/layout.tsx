@@ -12,16 +12,37 @@ const geistSans = Google_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://cuidarsenseperdres.vercel.app"),
   title: {
-    default: "Cuidar sense perdre's - Guia psicoeducativa per a familiars",
+    default: "Cuidar sense perdre's — Guia psicoeducativa per a familiars",
     template: "%s · Cuidar sense perdre's",
   },
   description:
     "Guia psicoeducativa per a familiars de persones amb càncer. Recursos emocionals, estratègies de suport i acompanyament al llarg del procés oncològic.",
+  keywords: [
+    "càncer",
+    "familiars de persones amb càncer",
+    "guia psicoeducativa",
+    "suport emocional",
+    "oncologia",
+    "benestar psicològic",
+    "cuidadors",
+    "acompanyament",
+  ],
+  authors: [{ name: "Maria Collet" }],
   openGraph: {
     type: "website",
     locale: "ca_ES",
     siteName: "Cuidar sense perdre's",
+    title: "Cuidar sense perdre's — Guia psicoeducativa per a familiars",
+    description:
+      "Guia psicoeducativa per a familiars de persones amb càncer. Recursos emocionals, estratègies de suport i acompanyament al llarg del procés oncològic.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Cuidar sense perdre's — Guia psicoeducativa per a familiars",
+    description:
+      "Guia psicoeducativa per a familiars de persones amb càncer. Recursos emocionals, estratègies de suport i acompanyament al llarg del procés oncològic.",
   },
 };
 

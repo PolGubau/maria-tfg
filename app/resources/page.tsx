@@ -3,7 +3,7 @@ import Link from "next/link";
 import { buttonVariants } from "~/shared/ui/button";
 
 export const metadata: Metadata = {
-  title: "Recursos de suport · Cuidar sense perdre's",
+  title: "Recursos de suport",
   description:
     "Associacions, línies d'ajuda i serveis especialitzats per a familiars de persones amb càncer.",
 };

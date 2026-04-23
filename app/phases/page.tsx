@@ -9,7 +9,7 @@ import { buttonVariants } from "~/shared/ui/button";
 export const metadata: Metadata = {
   title: "Guies per fase",
   description:
-    "Selecciona la fase del proce's oncolo`gic on et trobes per accedir a la guia d'acompanyament corresponent.",
+    "Selecciona la fase del procés oncològic on et trobes per accedir a la guia d'acompanyament corresponent.",
 };
 
 export default function GuidesPage() {

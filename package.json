@@ -2,9 +2,9 @@
 	"name": "cuidar-sense-perdres",
 	"version": "1.0.0",
 	"description": "Guia psicoeducativa per a familiars de persones amb càncer. Treball de Fi de Grau — Maria Collet.",
-	"author": "Maria Collet",
+	"author": "Pol Gubau Amores <gubaupol@gmail.com>",
 	"keywords": ["càncer", "familiars", "psicoeducació", "oncologia", "suport emocional", "guia", "TFG"],
-	"private": true,
+	"private": false,
 	"scripts": {
 		"dev": "next dev",
 		"build": "next build",

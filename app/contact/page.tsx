@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { buttonVariants } from "~/shared/ui/button";
 
 export const metadata: Metadata = {
-  title: "Contacte · Cuidar sense perdre's",
+  title: "Contacte",
   description:
     "Posa't en contacte per a preguntes sobre la recerca, col·laboracions o feedback sobre la guia.",
 };

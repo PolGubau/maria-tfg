@@ -9,7 +9,7 @@ import {
 } from "~/features/data/survey-charts";
 
 export const metadata: Metadata = {
-  title: "Dades de l'enquesta · Cuidar sense perdre's",
+  title: "Dades de l'enquesta",
   description:
     "Resultats de l'enquesta realitzada a 47 familiars de persones amb càncer.",
 };

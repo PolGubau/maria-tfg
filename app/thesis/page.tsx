@@ -3,7 +3,7 @@ import Link from "next/link";
 import { buttonVariants } from "~/shared/ui/button";
 
 export const metadata: Metadata = {
-  title: "La recerca · Cuidar sense perdre's",
+  title: "La recerca",
   description:
     "Treball de Fi de Grau sobre el benestar psicològic dels familiars de persones amb càncer.",
 };
@@ -206,7 +206,7 @@ export default function ThesisPage() {
 
         {/* CTA / Contact */}
         <section className="bg-accent-light rounded-xl p-8">
-           
+
           <h3 className="text-xl font-semibold text-ink mb-3">
             Tens preguntes sobre la recerca?
           </h3>
