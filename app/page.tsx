@@ -6,23 +6,7 @@ import { Badge } from "~/shared/ui/badge";
 import { buttonVariants } from "~/shared/ui/button";
 import { Reveal } from "~/shared/ui/reveal";
 
-// Three window-pane clusters — gaps simulate the window frame
-const sunRays = [
-  // Pane 1 (top cluster)
-  { angle: 5, thickness: 220, dur: "18s", delay: "0s", opacity: 0.52 },
-  { angle: 14, thickness: 90, dur: "22s", delay: "1.2s", opacity: 0.38 },
-  { angle: 22, thickness: 180, dur: "16s", delay: "3.5s", opacity: 0.48 },
-  // gap ~8° = window bar
-  // Pane 2 (mid cluster)
-  { angle: 32, thickness: 240, dur: "20s", delay: "0.8s", opacity: 0.55 },
-  { angle: 41, thickness: 100, dur: "24s", delay: "2.6s", opacity: 0.4 },
-  { angle: 50, thickness: 200, dur: "17s", delay: "4.2s", opacity: 0.5 },
-  // gap ~10° = window bar
-  // Pane 3 (lower cluster)
-  { angle: 62, thickness: 260, dur: "21s", delay: "1.5s", opacity: 0.45 },
-  { angle: 72, thickness: 110, dur: "19s", delay: "0.4s", opacity: 0.35 },
-  { angle: 81, thickness: 190, dur: "23s", delay: "3.0s", opacity: 0.42 },
-];
+
 
 const keyStats = [
   {
@@ -50,38 +34,29 @@ export default function HomePage() {
     <div>
       {/* Hero */}
       <section
-        className="relative min-h-[100svh] flex flex-col overflow-hidden"
+        className="relative min-h-[60svh] pb-40 flex flex-col overflow-hidden"
         style={{ background: "oklch(93% 0.022 72)" }}
       >
-        {/* Warm glow — light source origin */}
-        <div
-          className="absolute pointer-events-none hidden"
-          aria-hidden
-          style={{}}
-        />
-
-        {/* Sun rays — fan from top-right */}
+        {/* Drifting blob — warm light source, top-right */}
         <div
           className="absolute inset-0 pointer-events-none overflow-hidden"
           aria-hidden
-          style={{ mixBlendMode: "screen" }}
         >
-          {sunRays.map((ray, i) => (
-            <div
-              key={i}
-              style={{
-                position: "absolute",
-                top: "-10%",
-                right: "-6%",
-                width: "300vw",
-                height: `${ray.thickness}px`,
-                transformOrigin: "top right",
-                transform: `rotate(${ray.angle}deg)`,
-                background: `linear-gradient(to left, oklch(97% 0.06 78 / ${ray.opacity}), transparent 65%)`,
-                animation: `ray-shimmer ${ray.dur} ${ray.delay} infinite ease-in-out`,
-              }}
-            />
-          ))}
+          <div
+            style={{
+              position: "absolute",
+              top: "-20%",
+              right: "-15%",
+              width: "70vmax",
+              height: "70vmax",
+              borderRadius: "50%",
+              background:
+                "radial-gradient(ellipse at center, oklch(88% 0.09 72 / 0.55) 0%, oklch(90% 0.06 75 / 0.3) 40%, transparent 70%)",
+              filter: "blur(60px)",
+              animation: "blob-drift 20s ease-in-out infinite",
+              willChange: "transform",
+            }}
+          />
         </div>
 
         {/* Canvas fade at bottom — ensures text legibility */}
@@ -99,15 +74,19 @@ export default function HomePage() {
             <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted mb-8">
               Guia psicoeducativa per a familiars · 47 participants
             </p>
-            <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-light text-ink leading-[1.05] mb-8 tracking-tight">
-              Cuidar sense
+            <h1 className="font-display text-5xl md:text-6xl lg:text-8xl font-light text-ink leading-none mb-8 tracking-tighter">
+              <span>
+                Cuidar sense
+              </span>
               <br />
-              <em className="not-italic text-accent font-medium">perdre&apos;s</em>
+              <em className="text-accent font-bold not-italic">perdre&apos;s</em>
             </h1>
             <p className="text-lg text-ink-muted leading-relaxed mb-10 max-w-md">
               Quan un familiar rep un diagnòstic de càncer, els que l&apos;envolten
-              solen centrar-se en el pacient —i obliden les seves pròpies
-              necessitats. Aquesta guia és per a tu.
+              solen centrar-se en el pacient i obliden les seves pròpies
+              necessitats.
+              <br />
+              Aquesta guia és per a tu.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link

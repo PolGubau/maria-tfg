@@ -199,19 +199,18 @@ h6 {
 	}
 }
 
-/* ── Sunray animation ── */
-@keyframes ray-shimmer {
-	0%,
+/* ── Blob drift animation ── */
+@keyframes blob-drift {
+	0% {
+		transform: translate(0%, 0%) scale(1);
+	}
+	33% {
+		transform: translate(-6%, 8%) scale(1.08);
+	}
+	66% {
+		transform: translate(5%, -5%) scale(0.95);
+	}
 	100% {
-		opacity: 1;
-	}
-	30% {
-		opacity: 0.45;
-	}
-	55% {
-		opacity: 0.8;
-	}
-	75% {
-		opacity: 0.55;
+		transform: translate(0%, 0%) scale(1);
 	}
 }
