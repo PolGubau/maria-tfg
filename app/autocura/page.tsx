@@ -53,11 +53,12 @@ const MODULE_LABELS: Record<string, string> = {
 };
 
 export default function AutocuraPage() {
-  const [answers, setAnswers] = useState<Record<string, number>>({});
-  const [touched, setTouched] = useState<Set<string>>(new Set());
+  const [answers, setAnswers] = useState<Record<string, number>>(
+    () => Object.fromEntries(QUESTIONS.map((q) => [q.id, 0]))
+  );
   const [submitted, setSubmitted] = useState(false);
 
-  const allAnswered = QUESTIONS.every((q) => touched.has(q.id));
+  const allAnswered = true;
   const score = Object.values(answers).reduce((a, b) => a + b, 0);
   const result = getResult(score);
 
@@ -95,9 +96,6 @@ export default function AutocuraPage() {
                       max={3}
                       step={1}
                       value={val ?? 0}
-                      onPointerDown={() =>
-                        setTouched((p) => new Set(p).add(q.id))
-                      }
                       onChange={(e) =>
                         setAnswers((p) => ({ ...p, [q.id]: Number(e.target.value) }))
                       }

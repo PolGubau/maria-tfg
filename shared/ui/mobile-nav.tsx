@@ -42,7 +42,12 @@ export function MobileNav() {
                     active ? "text-accent" : "text-ink-muted"
                   )}
                 >
-                  <Icon className="w-5 h-5" strokeWidth={1.8} />
+                  <span className={cn(
+                    "flex items-center justify-center w-10 h-6 rounded-full transition-colors",
+                    active ? "bg-accent/15" : ""
+                  )}>
+                    <Icon className="w-5 h-5" strokeWidth={active ? 2.2 : 1.8} />
+                  </span>
                   <span>{label}</span>
                 </Link>
               );
@@ -58,7 +63,12 @@ export function MobileNav() {
                   )}
                   aria-label="Menú principal"
                 >
-                  <Menu className="w-5 h-5" strokeWidth={1.8} />
+                  <span className={cn(
+                    "flex items-center justify-center w-10 h-6 rounded-full transition-colors",
+                    open ? "bg-accent/15" : ""
+                  )}>
+                    <Menu className="w-5 h-5" strokeWidth={open ? 2.2 : 1.8} />
+                  </span>
                   <span>Menú</span>
                 </button>
               </Drawer.Trigger>
