@@ -1,9 +1,10 @@
-import { BookOpen, Clock, Lightbulb } from "lucide-react";
+import { Clock, Lightbulb } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { modules } from "~/entities/module/data";
 import { getPhase, phases } from "~/entities/phase/data";
+import { ModuleCard } from "~/features/modules/module-card";
 import { PhaseSectionNav } from "~/features/phases/phase-section-nav";
 import { ResourceCard } from "~/features/phases/resource-card";
 import { Badge } from "~/shared/ui/badge";
