@@ -63,8 +63,8 @@ h6 {
 }
 
 ::selection {
-	background-color: var(--color-accent-light);
-	color: var(--color-ink);
+	background-color: var(--color-ink);
+	color: var(--color-canvas);
 }
 
 /* Smooth focus rings */
