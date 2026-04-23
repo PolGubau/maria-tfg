@@ -15,12 +15,7 @@ const QUESTIONS = [
   { id: "q8", text: "Et sents emocionalment esgotat/da al final del dia?" },
 ];
 
-const OPTIONS = [
-  { value: 0, label: "Mai" },
-  { value: 1, label: "De vegades" },
-  { value: 2, label: "Sovint" },
-  { value: 3, label: "Gairebé sempre" },
-];
+const LABELS = ["Mai", "De vegades", "Sovint", "Gairebé sempre"];
 
 function getResult(score: number) {
   if (score <= 8)
@@ -80,32 +75,48 @@ export default function AutocuraPage() {
           </p>
         </div>
       </div>
-o o o
-      <div className="max-w-4xl mx-auto px-6 py-12 space-y-8">
+      <div className="max-w-4xl mx-auto px-6 py-12 space-y-6">
         {!submitted ? (
           <>
-            {QUESTIONS.map((q, i) => (
-              <div key={q.id} className="space-y-3">
-                <p className="text-sm font-medium text-ink">
-                  <span className="text-ink-muted mr-2 tabular-nums">{i + 1}.</span>
-                  {q.text}
-                </p>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                  {OPTIONS.map((opt) => (
-                    <button
-                      key={opt.value}
-                      onClick={() => setAnswers((p) => ({ ...p, [q.id]: opt.value }))}
-                      className={`px-3 py-2 text-xs font-medium rounded-lg border transition-all ${answers[q.id] === opt.value
-                          ? "bg-ink text-canvas border-ink"
-                          : "bg-canvas text-ink-muted border-border hover:border-ink hover:text-ink"
-                        }`}
-                    >
-                      {opt.label}
-                    </button>
-                  ))}
+            {QUESTIONS.map((q, i) => {
+              const val = answers[q.id];
+              return (
+                <div key={q.id} className="p-5 rounded-xl border border-border bg-surface/40 space-y-4">
+                  <p className="text-sm font-medium text-ink leading-snug">
+                    <span className="text-ink-muted mr-2 tabular-nums">{i + 1}.</span>
+                    {q.text}
+                  </p>
+
+                  {/* Labels */}
+                  <div className="flex justify-between text-[10px] text-ink-muted font-medium px-0.5">
+                    {LABELS.map((l) => <span key={l}>{l}</span>)}
+                  </div>
+
+                  {/* Slider */}
+                  <input
+                    type="range"
+                    min={0}
+                    max={3}
+                    step={1}
+                    value={val ?? 0}
+                    onChange={(e) =>
+                      setAnswers((p) => ({ ...p, [q.id]: Number(e.target.value) }))
+                    }
+                    onClick={() => {
+                      if (answers[q.id] === undefined)
+                        setAnswers((p) => ({ ...p, [q.id]: 0 }));
+                    }}
+                    className="w-full accent-accent cursor-pointer"
+                    aria-label={q.text}
+                  />
+
+                  {/* Selected value */}
+                  <p className={`text-xs text-center font-medium transition-colors ${val === undefined ? "text-ink-muted/40 italic" : "text-accent"}`}>
+                    {val === undefined ? "Mou el control per respondre" : LABELS[val]}
+                  </p>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
             <div className="pt-4">
               <button
