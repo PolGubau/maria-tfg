@@ -1,7 +1,9 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import Link from "next/link";
 import { phases } from "~/entities/phase/data";
+import { modules } from "~/entities/module/data";
 import { PhaseCard } from "~/features/phases/phase-card";
+import { ModuleCard } from "~/features/modules/module-card";
 import { buttonVariants } from "~/shared/ui/button";
 
 export const metadata: Metadata = {
@@ -34,17 +36,38 @@ export default function GuidesPage() {
         ))}
       </div>
 
+      {/* Visual module index */}
+      <div className="mt-20">
+        <div className="max-w-2xl mb-10">
+          <p className="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-3">
+            Índex de mòduls
+          </p>
+          <h2 className="text-2xl font-semibold text-ink mb-3">
+            Tots els mòduls psicoeducatius
+          </h2>
+          <p className="text-ink-muted leading-relaxed">
+            Cada mòdul és accessible des de qualsevol fase. Pots llegir-los en
+            l&apos;ordre que més t&apos;interessi o seguir la seqüència proposada.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {modules.map((mod) => (
+            <ModuleCard key={mod.slug} mod={mod} />
+          ))}
+        </div>
+      </div>
+
       {/* Footer note */}
       <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <p className="text-sm text-ink-muted max-w-md">
-          Podeu canviar de guia en qualsevol moment. Cada una e's independent i
-          complementa`ria.
+          Podeu canviar de guia en qualsevol moment. Cada una és independent i
+          complementària.
         </p>
         <Link
           href="/thesis"
           className={buttonVariants({ variant: "ghost", size: "sm" })}
         >
-          {"La recerca darrere les guies ->"}
+          La recerca darrere les guies →
         </Link>
       </div>
     </div>

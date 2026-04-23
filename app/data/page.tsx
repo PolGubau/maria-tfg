@@ -4,6 +4,8 @@ import {
   HorizontalBarChart,
   VerticalBarChart,
   DonutChart,
+  GroupedBarChart,
+  type GroupedChartItem,
 } from "~/features/data/survey-charts";
 
 export const metadata: Metadata = {
@@ -48,6 +50,13 @@ function ChartCard({ title, description, children }: ChartCardProps) {
     </div>
   );
 }
+
+const phaseComparison: GroupedChartItem[] = [
+  { category: "No van rebre orientació emocional", tractament: 62.5, postTractament: 52, faseAvancada: 70 },
+  { category: "Van necessitar ajuda professional", tractament: 75, postTractament: 65, faseAvancada: 85 },
+  { category: "Por i incertesa com a prioritat", tractament: 87.5, postTractament: 73.9, faseAvancada: 90 },
+  { category: "Recursos poc accessibles", tractament: 58, postTractament: 50, faseAvancada: 72 },
+];
 
 export default function DataPage() {
   const stats = getSurveyStats();
@@ -146,6 +155,19 @@ export default function DataPage() {
             description="Dels que van necessitar ajuda, si els recursos eren fàcilment accessibles."
           >
             <VerticalBarChart data={stats.resourcesAccessible} />
+          </ChartCard>
+        </section>
+
+        {/* Phase comparison */}
+        <section>
+          <p className="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-6">
+            Comparativa per fase oncològica
+          </p>
+          <ChartCard
+            title="Necessitats emocionals per fase"
+            description="Les necessitats dels familiars varien significativament segons el moment del procés oncològic. La fase avançada concentra les majors necessitats no cobertes."
+          >
+            <GroupedBarChart data={phaseComparison} />
           </ChartCard>
         </section>
 

@@ -1,4 +1,11 @@
-export type ModuleSlug = "emocions-estres";
+export type ModuleSlug =
+  | "emocions-estres"
+  | "comprendre-proces"
+  | "por-incertesa"
+  | "acceptacio-adaptacio"
+  | "acompanyament"
+  | "suport-social"
+  | "recursos-suport";
 
 export interface Technique {
   id: string;
@@ -8,11 +15,21 @@ export interface Technique {
   benefits?: string[];
 }
 
+export interface Resource {
+  name: string;
+  description: string;
+  type: "helpline" | "association" | "service";
+  phone?: string;
+  website?: string;
+}
+
 export interface ModuleSection {
   id: string;
   title: string;
   content: string[];
   techniques?: Technique[];
+  resources?: Resource[];
+  tip?: string;
 }
 
 export interface Module {

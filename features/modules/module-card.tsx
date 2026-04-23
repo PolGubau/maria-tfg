@@ -1,12 +1,18 @@
+"use client";
+
 import Link from "next/link";
-import { BookOpen, Clock } from "lucide-react";
+import { BookOpen, Clock, CheckCircle2 } from "lucide-react";
 import type { Module } from "~/entities/module/types";
+import { useModuleProgress } from "~/shared/lib/use-module-progress";
 
 interface Props {
   mod: Module;
 }
 
 export function ModuleCard({ mod }: Props) {
+  const { isRead, hydrated } = useModuleProgress();
+  const read = hydrated && isRead(mod.slug);
+
   return (
     <Link
       href={`/modules/${mod.slug}`}
@@ -22,9 +28,17 @@ export function ModuleCard({ mod }: Props) {
         <p className="text-xs text-ink-muted mt-1 leading-relaxed line-clamp-2">
           {mod.subtitle}
         </p>
-        <div className="flex items-center gap-1 mt-2 text-xs text-ink-muted">
-          <Clock className="w-3 h-3" />
-          {mod.readingTime} min
+        <div className="flex items-center gap-2 mt-2 text-xs text-ink-muted">
+          <span className="flex items-center gap-1">
+            <Clock className="w-3 h-3" />
+            {mod.readingTime} min
+          </span>
+          {read && (
+            <span className="flex items-center gap-1 text-post font-medium">
+              <CheckCircle2 className="w-3 h-3" />
+              Llegit
+            </span>
+          )}
         </div>
       </div>
       <span className="text-ink-muted group-hover:text-accent transition-colors shrink-0 mt-1">

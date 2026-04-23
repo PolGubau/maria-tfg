@@ -48,10 +48,8 @@ export function Footer() {
               {[
                 { href: "/data", label: "Dades de l'enquesta" },
                 { href: "/thesis", label: "La recerca completa" },
-                {
-                  href: "/modules/emocions-estres",
-                  label: "Mòdul: Gestió emocional",
-                },
+                { href: "/resources", label: "Recursos de suport" },
+                { href: "/contact", label: "Contacte" },
               ].map(({ href, label }) => (
                 <li key={href}>
                   <Link

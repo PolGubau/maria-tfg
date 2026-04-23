@@ -35,22 +35,44 @@ const methodology = [
   {
     label: "Disseny",
     value: "Estudi descriptiu transversal de tipus C amb producte",
+    detail:
+      "La investigació combina l'anàlisi de necessitats amb el disseny d'un producte pràctic (la guia psicoeducativa), seguint el model de recerca aplicada en psicologia clínica.",
   },
   {
     label: "Instrument",
-    value:
-      "Qüestionari ad hoc de 15 ítems (Likert, resposta múltiple i oberta)",
+    value: "Qüestionari ad hoc de 15 ítems (Likert, resposta múltiple i oberta)",
+    detail:
+      "El qüestionari es va dissenyar específicament per a aquesta recerca, amb validació per part d'una psicòloga oncòloga col·laboradora. Inclou escales Likert, preguntes de resposta múltiple i preguntes obertes per capturar l'experiència qualitativa.",
   },
   {
     label: "Mostra",
-    value:
-      "47 participants - familiars i persones properes a pacients amb càncer",
+    value: "47 participants – familiars i persones properes a pacients amb càncer",
+    detail:
+      "Mostreig per conveniència amb difusió a través de xarxes socials i associacions oncològiques. Participants en diverses fases: tractament actiu, finalització del tractament i fase avançada.",
   },
   {
     label: "Recollida",
     value: "Desembre 2025 – Febrer 2026 (plataforma Google Forms)",
+    detail: "Recollida anònima i voluntària. Temps mitjà de resposta: 12 minuts.",
   },
-  { label: "Anàlisi", value: "Descriptiva: frequencies, percentajes i temàtica" },
+  {
+    label: "Anàlisi quantitativa",
+    value: "Estadística descriptiva: freqüències i percentatges per variable",
+    detail:
+      "Les dades tancades es van analitzar amb estadística descriptiva bàsica (freqüències, percentatges, mesures de tendència central) per identificar patrons generals i diferències per fase.",
+  },
+  {
+    label: "Anàlisi qualitativa",
+    value: "Codificació inductiva de respostes obertes",
+    detail:
+      "Les respostes obertes es van analitzar mitjançant codificació inductiva: lectura flotant, identificació de categories emergents i agrupació temàtica. Procés supervisat per la tutora del TFG.",
+  },
+  {
+    label: "Col·laboració professional",
+    value: "Psicòloga oncòloga col·laboradora en el disseny de la guia",
+    detail:
+      "El contingut de la guia psicoeducativa va ser revisat i validat per una psicòloga especialitzada en oncologia, garantint el rigor clínic de les recomanacions.",
+  },
 ];
 
 const themes = [
@@ -144,13 +166,20 @@ export default function ThesisPage() {
           </p>
           <div className="bg-surface border border-border rounded-xl divide-y divide-border">
             {methodology.map((m) => (
-              <div key={m.label} className="flex gap-4 px-6 py-4">
-                <span className="text-sm font-semibold text-ink w-28 shrink-0">
-                  {m.label}
-                </span>
-                <span className="text-sm text-ink-muted leading-relaxed">
-                  {m.value}
-                </span>
+              <div key={m.label} className="px-6 py-5">
+                <div className="flex gap-4">
+                  <span className="text-sm font-semibold text-ink w-40 shrink-0">
+                    {m.label}
+                  </span>
+                  <span className="text-sm text-ink leading-relaxed">
+                    {m.value}
+                  </span>
+                </div>
+                {m.detail && (
+                  <p className="text-xs text-ink-muted leading-relaxed mt-2 ml-44">
+                    {m.detail}
+                  </p>
+                )}
               </div>
             ))}
           </div>
@@ -176,10 +205,8 @@ export default function ThesisPage() {
         </section>
 
         {/* CTA / Contact */}
-        <section className="bg-accent-light border border-treatment-border rounded-xl p-8">
-          <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-3">
-            Contacte
-          </p>
+        <section className="bg-accent-light rounded-xl p-8">
+
           <h3 className="text-xl font-semibold text-ink mb-3">
             Tens preguntes sobre la recerca?
           </h3>
@@ -188,11 +215,11 @@ export default function ThesisPage() {
             saber més sobre el projecte, pots contactar-me directament.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/data" className={buttonVariants({ variant: "primary" })}>
-              Explorar les dades
+            <Link href="/contact" className={buttonVariants({ variant: "primary" })}>
+              Contactar →
             </Link>
-            <Link href="/phases/tractament" className={buttonVariants({ variant: "secondary" })}>
-              Llegir la guia
+            <Link href="/data" className={buttonVariants({ variant: "secondary" })}>
+              Explorar les dades
             </Link>
           </div>
         </section>

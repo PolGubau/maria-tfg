@@ -37,7 +37,7 @@ export default function HomePage() {
         className="relative min-h-[60svh] pb-40 flex flex-col overflow-hidden"
         style={{ background: "oklch(93% 0.022 72)" }}
       >
-        {/* Drifting blob — warm light source, top-right */}
+        {/* Drifting blob - warm light source, top-right */}
         <div
           className="absolute inset-0 pointer-events-none overflow-hidden"
           aria-hidden
@@ -59,7 +59,7 @@ export default function HomePage() {
           />
         </div>
 
-        {/* Canvas fade at bottom — ensures text legibility */}
+        {/* Canvas fade at bottom - ensures text legibility */}
         <div
           className="absolute bottom-0 left-0 right-0 h-3/4 pointer-events-none"
           style={{
@@ -71,14 +71,14 @@ export default function HomePage() {
         {/* Content – anchored bottom-left */}
         <div className="relative z-10 mt-auto max-w-6xl mx-auto w-full px-6 pb-28 pt-40">
           <div className="max-w-xl">
-            {/* 1 — context (smallest, first in) */}
+            {/* 1 - context (smallest, first in) */}
             <Reveal delay={0} direction="fade">
               <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-muted mb-8">
                 Guia psicoeducativa per a familiars · 47 participants
               </p>
             </Reveal>
 
-            {/* 2 — main message */}
+            {/* 2 - main message */}
             <Reveal delay={120}>
               <h1 className="font-display text-5xl md:text-6xl lg:text-8xl font-light text-ink leading-none mb-8 tracking-tighter">
                 <span>
@@ -89,7 +89,7 @@ export default function HomePage() {
               </h1>
             </Reveal>
 
-            {/* 3 — supporting copy */}
+            {/* 3 - supporting copy */}
             <Reveal delay={280}>
               <p className="text-lg text-ink-muted leading-relaxed mb-10 max-w-md">
                 Quan un familiar rep un diagnòstic de càncer, els que l&apos;envolten
@@ -100,11 +100,11 @@ export default function HomePage() {
               </p>
             </Reveal>
 
-            {/* 4 — action (last, highest delay) */}
+            {/* 4 - action (last, highest delay) */}
             <Reveal delay={440}>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  href="/guides"
+                  href="/phases"
                   className={buttonVariants({ variant: "primary", size: "lg" })}
                 >
                   Explora les guies <span aria-hidden>→</span>

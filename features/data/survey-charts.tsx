@@ -11,6 +11,7 @@ import {
   PieChart,
   Pie,
   Legend,
+  CartesianGrid,
 } from "recharts";
 import type { ChartItem } from "~/shared/lib/parse-survey";
 
@@ -97,6 +98,58 @@ export function VerticalBarChart({ data }: ChartProps) {
             <Cell key={i} fill={BAR_COLORS[i % BAR_COLORS.length]} />
           ))}
         </Bar>
+      </BarChart>
+    </ResponsiveContainer>
+  );
+}
+
+export interface GroupedChartItem {
+  category: string;
+  tractament: number;
+  postTractament: number;
+  faseAvancada: number;
+}
+
+interface GroupedChartProps {
+  data: GroupedChartItem[];
+}
+
+export function GroupedBarChart({ data }: GroupedChartProps) {
+  return (
+    <ResponsiveContainer width="100%" height={data.length * 64 + 60}>
+      <BarChart
+        data={data}
+        layout="vertical"
+        margin={{ left: 0, right: 24, top: 4, bottom: 4 }}
+        barCategoryGap="30%"
+      >
+        <CartesianGrid horizontal={false} stroke="#e5e0d8" />
+        <XAxis
+          type="number"
+          domain={[0, 100]}
+          tickFormatter={(v) => `${v}%`}
+          tick={{ fontSize: 11, fill: "#6b6b66" }}
+        />
+        <YAxis
+          type="category"
+          dataKey="category"
+          width={200}
+          tick={{ fontSize: 12, fill: "#1a1917", fontWeight: 500 }}
+          tickLine={false}
+        />
+        <Tooltip
+          cursor={{ fill: "#f3eee6" }}
+          contentStyle={{ border: "1px solid #e5e0d8", borderRadius: 8, fontSize: 12 }}
+          formatter={(v: number, name: string) => [`${v}%`, name]}
+        />
+        <Legend
+          iconType="circle"
+          iconSize={8}
+          wrapperStyle={{ fontSize: 12, color: "#6b6b66", paddingTop: 12 }}
+        />
+        <Bar dataKey="tractament" name="Tractament" fill={COLORS.treatment} radius={[0, 3, 3, 0]} />
+        <Bar dataKey="postTractament" name="Post-tractament" fill={COLORS.post} radius={[0, 3, 3, 0]} />
+        <Bar dataKey="faseAvancada" name="Fase avançada" fill={COLORS.advanced} radius={[0, 3, 3, 0]} />
       </BarChart>
     </ResponsiveContainer>
   );

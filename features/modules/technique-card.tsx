@@ -2,10 +2,14 @@
 
 import { useState } from "react";
 import type { Technique } from "~/entities/module/types";
+import { SensesExercise } from "./senses-exercise";
+import { SupportMapBuilder } from "./support-map";
 
 interface Props {
   technique: Technique;
   isBreathing?: boolean;
+  isSenses?: boolean;
+  isSupportMap?: boolean;
 }
 
 function BreathingTimer() {
@@ -99,7 +103,7 @@ function BreathingTimer() {
   );
 }
 
-export function TechniqueCard({ technique, isBreathing }: Props) {
+export function TechniqueCard({ technique, isBreathing, isSenses, isSupportMap }: Props) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -150,6 +154,8 @@ export function TechniqueCard({ technique, isBreathing }: Props) {
           )}
 
           {isBreathing && <BreathingTimer />}
+          {isSenses && <SensesExercise />}
+          {isSupportMap && <SupportMapBuilder />}
         </div>
       )}
     </div>
