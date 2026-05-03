@@ -76,13 +76,13 @@ const methodology = [
 ];
 
 const themes = [
-  "Gestió de les emocions i l'estrès",
-  "Comunicació amb el pacient i l'equip mèdic",
-  "Suport al pacient sense perdre el benestar propi",
-  "Afrontament de la por, la tristesa i la incertesa",
-  "Autocura del cuidador/a familiar",
-  "Signes d'alerta de sobrecàrrega emocional",
-  "Recursos de suport psicològic i social",
+  "Falta d'orientació emocional",
+  "Necessitat d'ajuda professional",
+  "Afrontar la por i la incertesa",
+  "Utilitat d'una guia psicoeducativa",
+  "Comunicació i suport emocional",
+  "Necessitat d'informació sobre la guia i el seu procés",
+  "Efectes del tractament i deteriorament físic",
 ];
 
 export default function ThesisPage() {

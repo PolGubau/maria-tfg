@@ -46,17 +46,6 @@ export default async function ModulePage({ params }: Props) {
           <p className="text-lg text-ink-muted leading-relaxed max-w-2xl">
             {mod.subtitle}
           </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {mod.relatedPhases.map((phase) => (
-              <Link
-                key={phase}
-                href={`/phases/${phase}`}
-                className={buttonVariants({ variant: "ghost", size: "sm", className: "border border-border" })}
-              >
-                ↗ {phase.replace("-", " ")}
-              </Link>
-            ))}
-          </div>
         </div>
       </header>
 
@@ -90,13 +79,15 @@ export default async function ModulePage({ params }: Props) {
             {/* Intro */}
             <div className="bg-surface rounded-xl p-6 border border-border space-y-3">
               <p className="text-ink-muted leading-relaxed">{mod.description}</p>
-              {mod.slug !== "emocions-estres" && (
-                <p className="text-sm text-ink-muted italic border-t border-border pt-3">
-                  Aquest apartat de la guia es troba actualment en procés de
-                  desenvolupament i s&apos;aniran ampliant progressivament per oferir
-                  continguts cada vegada més complets i útils.
-                </p>
-              )}
+              {mod.sections.some((s) =>
+                s.content[0]?.startsWith("Aquest apartat")
+              ) && (
+                  <p className="text-sm text-ink-muted italic border-t border-border pt-3">
+                    Aquest apartat de la guia es troba actualment en procés de
+                    desenvolupament i s&apos;aniran ampliant progressivament per oferir
+                    continguts cada vegada més complets i útils.
+                  </p>
+                )}
             </div>
 
             {mod.sections.map((section) => (
@@ -105,7 +96,7 @@ export default async function ModulePage({ params }: Props) {
                   {section.title}
                 </h2>
 
-                {mod.slug === "emocions-estres" && (
+                {!section.content[0]?.startsWith("Aquest apartat") && (
                   <>
                     <div className="space-y-4 mb-8">
                       {section.content.map((para) => (

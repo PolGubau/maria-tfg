@@ -1,10 +1,7 @@
 export type ModuleSlug =
 	| "introduccio"
 	| "comprendre-proces"
-	| "por-incertesa"
-	| "patiment-cuidador"
-	| "acceptacio-adaptacio"
-	| "emocions-estres"
+	| "impacte-emocional"
 	| "acompanyament"
 	| "suport-social"
 	| "recursos-suport";

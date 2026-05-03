@@ -34,16 +34,69 @@ export const modules: Module[] = [
 		],
 	},
 	{
-		slug: "emocions-estres",
-		title: "Gestionar les pròpies emocions i l'estrès",
-		subtitle: "Entendre el que sents per poder cuidar millor",
+		slug: "comprendre-proces",
+		title: "Comprendre el procés oncològic",
+		subtitle: "Saber què passa per poder acompanyar millor",
 		description:
-			"Cuidar implica un impacte emocional real. Aquest mòdul t'ajuda a reconèixer les teves emocions, entendre per què aparèixen i aprendre estratègies pràctiques per regular-les de manera saludable.",
-		relatedPhases: ["tractament", "post-tractament", "fase-avancada"],
-		readingTime: 12,
+			"Entendre el tractament, els seus efectes i el paper del familiar en cada fase del procés oncològic és fonamental per reduir la incertesa i poder estar present d'una manera útil.",
+		relatedPhases: ["tractament"],
+		readingTime: 10,
 		sections: [
 			{
-				id: "impacte-emocional",
+				id: "fase-tractament",
+				title: "Fase de tractament",
+				content: [
+					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
+				],
+			},
+			{
+				id: "fase-finalitzacio",
+				title: "Fase de finalització del tractament",
+				content: [
+					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
+				],
+			},
+			{
+				id: "fase-avancada-final",
+				title: "Fase avançada i final de vida",
+				content: [
+					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
+				],
+			},
+		],
+	},
+	{
+		slug: "impacte-emocional",
+		title: "Impacte emocional del cuidador al llarg del procés",
+		subtitle: "Identificar, comprendre i gestionar el que sents",
+		description:
+			"Acompanyar una persona amb càncer té un impacte emocional profund. Aquest mòdul ajuda a identificar emocions freqüents, comprendre'n la funció i aprendre estratègies pràctiques de regulació emocional.",
+		relatedPhases: ["tractament", "post-tractament", "fase-avancada"],
+		readingTime: 20,
+		sections: [
+			{
+				id: "viure-incertesa",
+				title: "3.1 Afrontar la por i la incertesa",
+				content: [
+					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
+				],
+			},
+			{
+				id: "patiment-cuidador",
+				title: "3.2 Patiment del cuidador",
+				content: [
+					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
+				],
+			},
+			{
+				id: "acceptacio-adaptacio",
+				title: "3.3 Acceptació i adaptació",
+				content: [
+					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
+				],
+			},
+			{
+				id: "cuidar-implica-impacte",
 				title: "Cuidar implica impacte emocional",
 				content: [
 					"La càrrega que comporta la malaltia fa que els cuidadors sovint hagin de canviar els seus hàbits i maneres de socialitzar, cosa que pot portar a situacions d'aïllament i patiment. Com a resultat, poden aparèixer problemes físics i emocionals: estrès, irritabilitat, apatia o tristesa.",
@@ -148,147 +201,12 @@ export const modules: Module[] = [
 							"Reforça la identitat pròpia més enllà del rol de cuidador",
 						],
 						steps: [
-							"Identifica 2-3 activitats que et generïn benestar (passejar, llegir, escoltar música, cuinar...)",
+							"Identifica 2-3 activitats que et generin benestar (passejar, llegir, escoltar música, cuinar...)",
 							"Programa-les en la teva agenda com si fossin cites importants",
 							"No les canceles ni les postergues per 'no tenir temps'",
 							"Recorda: no és un luxe, és una necessitat",
 						],
 					},
-				],
-			},
-		],
-	},
-	{
-		slug: "comprendre-proces",
-		title: "Comprendre el procés oncològic",
-		subtitle: "Saber què passa per poder acompanyar millor",
-		description:
-			"Entendre el tractament, els seus efectes i el paper del familiar en cada fase del procés oncològic és fonamental per reduir la incertesa i poder estar present d'una manera útil.",
-		relatedPhases: ["tractament"],
-		readingTime: 10,
-		sections: [
-			{
-				id: "fase-tractament",
-				title: "Fase de tractament",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "fase-finalitzacio",
-				title: "Fase de finalització del tractament",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "fase-avancada-final",
-				title: "Fase avançada i final de vida",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-		],
-	},
-	{
-		slug: "por-incertesa",
-		title: "Afrontar la por i la incertesa",
-		subtitle: "Aprendre a viure amb allò que no podem controlar",
-		description:
-			"La por és una de les emocions més presents al llarg del procés oncològic. Entendre-la, posar-li nom i aprendre estratègies per conviure-hi és fonamental per al benestar del familiar.",
-		relatedPhases: ["tractament"],
-		readingTime: 9,
-		sections: [
-			{
-				id: "viure-incertesa",
-				title: "Viure amb la incertesa",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "por-pronostic",
-				title: "Tractament: Por al pronòstic",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "por-recaiguda",
-				title: "Finalització del tractament: Por a la recaiguda",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "por-mort",
-				title: "Fase avançada: Por a la mort",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-		],
-	},
-	{
-		slug: "patiment-cuidador",
-		title: "Patiment del cuidador",
-		subtitle: "Reconèixer el malestar per poder gestionar-lo",
-		description:
-			"Acompanyar una persona amb càncer genera un impacte emocional profund. Reconèixer l'ansietat, les inseguretats i aprendre orientacions pràctiques per afrontar-lo és fonamental per al benestar del cuidador.",
-		relatedPhases: ["tractament"],
-		readingTime: 8,
-		sections: [
-			{
-				id: "ansietat-cures",
-				title: "L'ansietat associada a les cures",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "inseguretats-emergents",
-				title: "Inseguretats emergents",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "orientacions-practiques",
-				title: "Orientacions pràctiques",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-		],
-	},
-	{
-		slug: "acceptacio-adaptacio",
-		title: "Acceptació i adaptació",
-		subtitle: "Trobar l'equilibri en una nova realitat",
-		description:
-			"Cada fase del procés oncològic exigeix una adaptació diferent. Comprendre el procés d'acceptació i disposar d'estratègies pràctiques per adaptar-se ajuda a mantenir el benestar al llarg del temps.",
-		relatedPhases: ["tractament"],
-		readingTime: 8,
-		sections: [
-			{
-				id: "adaptacio-malaltia",
-				title: "Tractament: Adaptació a la malaltia",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "adaptacio-nova-realitat",
-				title: "Finalització del tractament: Adaptació a la nova realitat",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "dol-anticipat",
-				title: "Fase avançada: Dol anticipat i preparació per a la pèrdua",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
 				],
 			},
 		],

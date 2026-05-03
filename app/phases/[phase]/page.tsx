@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 const sectionModules: Record<string, string[]> = {
   "introduccio": ["introduccio"],
   "comprendre-proces": ["comprendre-proces"],
-  "impacte-emocional": ["por-incertesa", "patiment-cuidador", "acceptacio-adaptacio", "emocions-estres"],
+  "impacte-emocional": ["impacte-emocional"],
   "acompanyament": ["acompanyament"],
   "suport-social": ["suport-social"],
   "recursos": ["recursos-suport"],
