@@ -15,8 +15,8 @@ const keyStats = [
       "familiars no van rebre orientació emocional en el moment del diagnòstic",
   },
   {
-    value: "75%",
-    label: "van sentir la necessitat de suport psicològic durant el tractament",
+    value: "50%",
+    label: "dels familiars que han necessitat suport no els hi ha sigut accessible",
   },
   {
     value: "100%",
@@ -96,7 +96,7 @@ export default function HomePage() {
                 solen centrar-se en el pacient i obliden les seves pròpies
                 necessitats.
                 <br />
-                Aquesta guia és per a tu.
+                Si et sents així, aquesta guia és per a tu.
               </p>
             </Reveal>
 
@@ -135,7 +135,7 @@ export default function HomePage() {
                 <p className="font-display text-4xl font-light italic text-ink leading-none">
                   {stat.value}
                 </p>
-                <p className="text-sm text-ink-muted leading-relaxed max-w-[18ch]">
+                <p className="text-sm text-pretty text-ink-muted leading-relaxed max-w-[18ch]">
                   {stat.label}
                 </p>
               </Reveal>
@@ -154,17 +154,18 @@ export default function HomePage() {
             Adaptada a cada moment del procés
           </h2>
           <p className="mt-4 text-ink-muted leading-relaxed max-w-xl">
-            Les necessitats emocionals canvien al llarg del procés oncologico.
-            La guia s&apos;estructura en tres fases per reflectir aquesta realitat.
+            Aquesta guia psicoeducativa ofereix orientació, suport emocional i eines pràctiques per a familiars de persones amb càncer, adaptades a cada fase del procés oncològic.
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {phases.map((phase, idx) => (
-            <Reveal key={phase.slug} delay={idx * 100}>
-              <PhaseCard phase={phase} />
-            </Reveal>
-          ))}
-        </div>
+        <Link
+          href={`/phases/${phases[0].slug}`} className="max-w-sm rounded-lg border border-border p-6 mb-10 transition-colors hover:bg-surface/50 flex items-center justify-between">
+          <span>
+            Descobreix la guia
+          </span>
+          <span>
+            <span className="ml-2 text-ink-muted" aria-hidden>→</span>
+          </span>
+        </Link>
       </section>
       <section className="border-t border-border bg-surface">
         <div className="max-w-6xl mx-auto px-6 py-16">
@@ -190,6 +191,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </div>
+    </div >
   );
 }

@@ -1,11 +1,11 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 import { getModule, modules } from "~/entities/module/data";
 import { TechniqueCard } from "~/features/modules/technique-card";
 import { Badge } from "~/shared/ui/badge";
 import { buttonVariants } from "~/shared/ui/button";
 import { MarkAsRead } from "~/shared/ui/mark-as-read";
-import type { Metadata } from "next";
-import Link from "next/link";
-import { notFound } from "next/navigation";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -88,8 +88,15 @@ export default async function ModulePage({ params }: Props) {
           {/* Main content */}
           <div className="space-y-16">
             {/* Intro */}
-            <div className="bg-surface rounded-xl p-6 border border-border">
+            <div className="bg-surface rounded-xl p-6 border border-border space-y-3">
               <p className="text-ink-muted leading-relaxed">{mod.description}</p>
+              {mod.slug !== "emocions-estres" && (
+                <p className="text-sm text-ink-muted italic border-t border-border pt-3">
+                  Aquest apartat de la guia es troba actualment en procés de
+                  desenvolupament i s&apos;aniran ampliant progressivament per oferir
+                  continguts cada vegada més complets i útils.
+                </p>
+              )}
             </div>
 
             {mod.sections.map((section) => (
@@ -98,31 +105,35 @@ export default async function ModulePage({ params }: Props) {
                   {section.title}
                 </h2>
 
-                <div className="space-y-4 mb-8">
-                  {section.content.map((para) => (
-                    <p key={para} className="text-ink-muted leading-relaxed">
-                      {para}
-                    </p>
-                  ))}
-                </div>
-
-                {section.techniques && section.techniques.length > 0 && (
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-4">
-                      Estratègies pràctiques
-                    </p>
-                    <div className="space-y-3">
-                      {section.techniques.map((technique) => (
-                        <TechniqueCard
-                          key={technique.id}
-                          technique={technique}
-                          isBreathing={technique.id === "respiracio"}
-                          isSenses={technique.id === "ancoratge-present"}
-                          isSupportMap={technique.id === "mapa-suport"}
-                        />
+                {mod.slug === "emocions-estres" && (
+                  <>
+                    <div className="space-y-4 mb-8">
+                      {section.content.map((para) => (
+                        <p key={para} className="text-ink-muted leading-relaxed">
+                          {para}
+                        </p>
                       ))}
                     </div>
-                  </div>
+
+                    {section.techniques && section.techniques.length > 0 && (
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-widest text-ink-muted mb-4">
+                          Estratègies pràctiques
+                        </p>
+                        <div className="space-y-3">
+                          {section.techniques.map((technique) => (
+                            <TechniqueCard
+                              key={technique.id}
+                              technique={technique}
+                              isBreathing={technique.id === "respiracio"}
+                              isSenses={technique.id === "ancoratge-present"}
+                              isSupportMap={technique.id === "mapa-suport"}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </>
                 )}
               </section>
             ))}
@@ -142,8 +153,8 @@ export default async function ModulePage({ params }: Props) {
                   professional especialitzat.
                 </p>
                 <div className="flex flex-wrap gap-3 justify-center">
-                  <Link href="/autocura" className={buttonVariants({ variant: "primary" })}>
-                    Fer el test d&apos;autocura
+                  <Link href="/resources" className={buttonVariants({ variant: "primary" })}>
+                    Recursos de suport
                   </Link>
                   <Link href="/thesis" className={buttonVariants({ variant: "secondary" })}>
                     Llegir la recerca

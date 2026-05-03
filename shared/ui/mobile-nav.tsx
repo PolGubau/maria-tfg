@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, Heart, Home, Menu } from "lucide-react";
+import { BookOpen, Home, Menu } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -14,7 +14,7 @@ const HOME = { href: "/", label: "Inici", matchPrefix: ["/"] };
 const TAB_LINKS = [
   { href: "/", label: "Inici", Icon: Home },
   { href: "/modules", label: "Mòduls", Icon: BookOpen },
-  { href: "/autocura", label: "Test", Icon: Heart },
+  { href: "/phases", label: "Guia", Icon: BookOpen },
 ];
 
 function isActive(href: string, prefix: string[], pathname: string) {

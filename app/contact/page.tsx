@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { SITE_URL } from "~/shared/lib/config";
 import { buttonVariants } from "~/shared/ui/button";
 
 export const metadata: Metadata = {
@@ -55,13 +56,13 @@ export default function ContactPage() {
           </p>
           <div className="flex flex-wrap gap-4 items-center">
             <a
-              href="mailto:mariaroges15@gmail.com?subject=Contacte%20Guia%20Psicoeducativa&body=Hola%20Maria%2C%0A%0A"
+              href="mailto:cuidarsenseperdres@gmail.com?subject=Contacte%20Guia%20Psicoeducativa&body=Hola%20Maria%2C%0A%0A"
               className={buttonVariants({ variant: "primary" })}
             >
               ✉ Enviar correu
             </a>
             <span className="text-sm text-ink-muted font-mono select-all">
-              mariaroges15@gmail.com
+              cuidarsenseperdres@gmail.com
             </span>
           </div>
         </section>
@@ -76,7 +77,7 @@ export default function ContactPage() {
           </p>
           <div className="bg-surface mt-6 mb-4 rounded-lg px-5 py-4 border border-border">
             <p className="text-sm font-mono text-ink leading-relaxed select-all cursor-text">
-              Rogés, M. (2026). <em>Cuidar sense perdre&apos;s: Guia psicoeducativa per a familiars de persones amb càncer</em>. https://tfg-maria.vercel.app/
+              Rogés, M. (2026). <em>Cuidar sense perdre&apos;s: Guia psicoeducativa per a familiars de persones amb càncer</em>. {SITE_URL}/
             </p>
           </div>
           <p className="text-xs text-ink-muted">

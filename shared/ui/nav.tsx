@@ -7,9 +7,8 @@ import { useEffect, useState } from "react";
 import { cn } from "~/shared/lib/utils";
 
 export const links = [
-  { href: "/phases", label: "Guies", matchPrefix: ["/phases"] },
+  { href: "/phases", label: "Guia", matchPrefix: ["/phases"] },
   { href: "/modules", label: "Mòduls", matchPrefix: ["/modules"] },
-  { href: "/autocura", label: "Test d'autocura", matchPrefix: ["/autocura"] },
   { href: "/data", label: "Dades", matchPrefix: ["/data"] },
   { href: "/thesis", label: "La recerca", matchPrefix: ["/thesis"] },
   { href: "/resources", label: "Recursos", matchPrefix: ["/resources"] },

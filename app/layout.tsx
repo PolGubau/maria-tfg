@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Google_Sans } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "~/shared/lib/config";
 import { Footer } from "~/shared/ui/footer";
 import { MobileNav } from "~/shared/ui/mobile-nav";
 import { Nav } from "~/shared/ui/nav";
@@ -12,7 +13,7 @@ const geistSans = Google_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://cuidarsenseperdres.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Cuidar sense perdre's — Guia psicoeducativa per a familiars",
     template: "%s · Cuidar sense perdre's",

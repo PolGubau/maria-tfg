@@ -35,14 +35,7 @@ const resourceGroups: ResourceGroup[] = [
         type: "helpline",
         phone: "900 100 036",
         website: "https://www.aecc.es",
-      },
-      {
-        name: "Telèfon d'atenció al cuidador (IMSERSO)",
-        description:
-          "Orientació i suport emocional per a cuidadors de persones dependents o malaltes cròniques.",
-        type: "helpline",
-        phone: "900 300 400",
-      },
+      }
     ],
   },
   {
@@ -177,7 +170,7 @@ export default function ResourcesPage() {
                     )}
                     {item.location && (
                       <span className="text-xs text-ink-muted">
-                        📍 {item.location}
+                        {item.location}
                       </span>
                     )}
                   </div>
