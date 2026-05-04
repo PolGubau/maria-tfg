@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getModule, modules } from "~/entities/module/data";
+import { getModule, hasContent, modules } from "~/entities/module/data";
 import { TechniqueCard } from "~/features/modules/technique-card";
 import { Badge } from "~/shared/ui/badge";
 import { buttonVariants } from "~/shared/ui/button";
@@ -12,7 +12,7 @@ interface Props {
 }
 
 export async function generateStaticParams() {
-  return modules.map((m) => ({ slug: m.slug }));
+  return modules.filter(hasContent).map((m) => ({ slug: m.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ModulePage({ params }: Props) {
   const { slug } = await params;
   const mod = getModule(slug);
-  if (!mod) notFound();
+  if (!mod || !hasContent(mod)) notFound();
 
   return (
     <div>

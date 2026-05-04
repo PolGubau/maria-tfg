@@ -305,3 +305,11 @@ export const modules: Module[] = [
 export function getModule(slug: string): Module | undefined {
 	return modules.find((m) => m.slug === slug);
 }
+
+const PLACEHOLDER_SENTINEL = "Aquest apartat de la guia es troba";
+
+export function hasContent(mod: Module): boolean {
+	return mod.sections.some(
+		(s) => !s.content[0]?.startsWith(PLACEHOLDER_SENTINEL)
+	);
+}
