@@ -75,27 +75,6 @@ export const modules: Module[] = [
 		readingTime: 20,
 		sections: [
 			{
-				id: "viure-incertesa",
-				title: "3.1 Afrontar la por i la incertesa",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "patiment-cuidador",
-				title: "3.2 Patiment del cuidador",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
-				id: "acceptacio-adaptacio",
-				title: "3.3 Acceptació i adaptació",
-				content: [
-					"Aquest apartat de la guia es troba actualment en procés de desenvolupament i s'aniran ampliant progressivament per oferir continguts cada vegada més complets i útils.",
-				],
-			},
-			{
 				id: "cuidar-implica-impacte",
 				title: "Cuidar implica impacte emocional",
 				content: [
