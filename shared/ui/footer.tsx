@@ -15,31 +15,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-ink-muted mb-3">
-              Fases
-            </p>
-            <ul className="space-y-2">
-              {[
-                { href: "/phases/tractament", label: "Fase de tractament" },
-                {
-                  href: "/phases/post-tractament",
-                  label: "Finalització del tractament",
-                },
-                { href: "/phases/fase-avancada", label: "Fase avançada" },
-              ].map(({ href, label }) => (
-                <li key={href}>
-                  <Link
-                    href={href}
-                    className="text-sm text-ink-muted hover:text-ink transition-colors"
-                  >
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
+    
           <div>
             <p className="text-xs font-semibold uppercase tracking-wider text-ink-muted mb-3">
               Recerca
