@@ -104,7 +104,7 @@ export default function ThesisPage() {
             associat: aquesta guia.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href="/thesis.pdf" className={buttonVariants({ variant: "primary" })}>
+            <a href="/tfg-maria-roges.pdf" className={buttonVariants({ variant: "primary" })}>
               ↓ Descarrega el TFG (PDF)
             </a>
             <Link href="/data" className={buttonVariants({ variant: "secondary" })}>
