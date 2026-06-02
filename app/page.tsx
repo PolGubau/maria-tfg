@@ -107,7 +107,7 @@ export default function HomePage() {
                   href="/phases"
                   className={buttonVariants({ variant: "primary", size: "lg" })}
                 >
-                  Explora les guies <span aria-hidden>→</span>
+                  Explora la guia <span aria-hidden>→</span>
                 </Link>
                 <Link
                   href="/thesis"
